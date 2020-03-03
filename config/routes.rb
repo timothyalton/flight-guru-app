@@ -3,5 +3,8 @@ Rails.application.routes.draw do
 
   root 'welcome#homepage'
 
-  resources 'users'
+  resources :users
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
 end

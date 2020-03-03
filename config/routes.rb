@@ -4,7 +4,14 @@ Rails.application.routes.draw do
   root 'welcome#homepage'
 
   resources :users
+  resources :terminals
+  resources :restaurants
+  resources :flights
+  resources :bookings
+
+
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+
 end

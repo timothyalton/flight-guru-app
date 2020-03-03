@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  get 'grayscale/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root 'welcome#homepage'
 
-  resources 'users'
+  resources :users
+  resources :terminals
+  resources :restaurants
+  resources :flights
+  resources :bookings
+
 end

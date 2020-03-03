@@ -1,0 +1,4 @@
+<h3>Terminals:</h3>
+<% @terminals.each do |terminal| %>
+    <p><%= link_to terminal.number, terminal_path(terminal) %></p>
+<% end %>

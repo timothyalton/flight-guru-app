@@ -1,0 +1,16 @@
+<h1>Flight Guru App</h1>
+
+<h3>Who are you?</h3> <!-- selects user; replace later with login functionality -->
+
+<!-- <%= form_tag('/users/:id', method: 'get') do %>
+  <%= select_tag("name", options_from_collection_for_select(@users, :id, :name)) %>
+  <input type=submit>
+<% end %> -->
+
+<%= form_with url: user_path(:user_id) do |f| %>
+<%= f.collection_select :user_id, @users, :id, :name %>
+<%= f.submit %>
+<% end %>
+
+<h2>API results: </h2>
+<%= @response %>

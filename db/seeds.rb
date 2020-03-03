@@ -24,7 +24,8 @@ t3 = Terminal.create(number: "C")
 f1 = Flight.create(number: "AA1111", terminal_id: t1.id)
 f2 = Flight.create(number: "SW123", terminal_id: t2.id)
 
-b1 = Booking.create(ticket_number: "1ABC123", user_id: u1.id, flight_id: f1.id)
+
+b1 = Booking.create(ticket_number: "1ABC123", user: u1, flight_id: f1.id)
 b2 = Booking.create(ticket_number: "1BCD234", user_id: u2.id, flight_id: f1.id)
 b3 = Booking.create(ticket_number: "1CDE345", user_id: u3.id, flight_id: f1.id)
 b4 = Booking.create(ticket_number: "1DEF456", user_id: u4.id, flight_id: f1.id)

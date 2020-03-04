@@ -1,7 +1,15 @@
-<%= form_for :user, url: '/users' do |f| %>
+<h1>Create your account!</h1>
+
+<%= form_with model: @user, url: '/registration' do |f| %>
   Name: <%= f.text_field :name %><br>
   Username: <%= f.text_field :username %><br>
   Password: <%= f.password_field :password %><br>
   Confirm Password: <%= f.password_field :password_confirmation %><br>
   <%= f.submit "Submit" %>
+<% end %>
+
+<% if flash[:errors] %>
+  <% flash[:errors].each do |e| %>
+    <li style="color: red"><%= e %></li>
+  <% end %>
 <% end %>

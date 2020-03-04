@@ -15,7 +15,14 @@ class SessionsController < ApplicationController
   def create # with authentication
     @user = User.find_by(username: params[:username])
 
-    if @user && @user.authenticate(params[:password])
+
+    if params[:username] == ""
+      unless flash[:errors]
+        flash[:errors] = []
+      end
+      flash[:errors] << "Please enter a username"
+      redirect_to root_path
+    elsif @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect_to @user
     elsif @user == nil
@@ -35,6 +42,10 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
+    if flash[:errors]
+      flash[:errors].clear
+    end
+    flash[:logout_message] = "You have logged out of your account"
     redirect_to root_path
   end
 end

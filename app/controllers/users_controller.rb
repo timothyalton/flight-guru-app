@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
     if user.valid?
       user.save
-      flash[:account_created_message] = "Account successfully created. Please log in."
+      flash[:signup_message] = "Account successfully created. Please log in."
       redirect_to root_path
     else
       flash[:errors] = user.errors.full_messages

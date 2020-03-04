@@ -1,0 +1,12 @@
+<h5>Flight info:</h5>
+<p><strong>Flight Number:</strong> <%=@booking.ticket_number%> </p>
+
+<br/>
+<p><strong>Airline:<strong></p>
+<br/>
+<button><%= link_to 'back', bookings_path %></button>
+
+<%= form_with model: @booking, method: :delete do |f| %>
+    <%= f.submit "Delete Flight"%>
+<% end %>
+

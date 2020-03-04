@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
 
+  post 'terminal_selection_id' => 'terminals#terminal_selection_id'
+  post 'booking_selection_id' => 'bookings#booking_selection_id'
+  
 end

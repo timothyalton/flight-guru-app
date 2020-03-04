@@ -1,4 +1,7 @@
-<h3>Terminals:</h3>
-<% @terminals.each do |terminal| %>
-    <p><%= link_to terminal.number, terminal_path(terminal) %></p>
+<h3>Select your Terminal</h3>
+
+
+<%= form_with url: "terminal_selection_id", method: :post do |f| %>
+    <%= f.collection_select :id, @terminals, :id, :number %>
+    <%= f.submit "Find Restaurants"%>
 <% end %>

@@ -1,7 +1,7 @@
 class TerminalsController < ApplicationController
 
 
-    before_action :current_terminal, only: [:show]
+    before_action :current_terminal, only: [:show, :terminal_selection_id]
 
     def index
         @terminals = Terminal.all
@@ -9,6 +9,10 @@ class TerminalsController < ApplicationController
 
     def show
 
+    end
+
+    def terminal_selection_id
+        redirect_to terminal_path(@terminal)
     end
 
     private
@@ -20,4 +24,5 @@ class TerminalsController < ApplicationController
     def terminal_params
         params.require(:terminal).permit(:name)
     end
+    
 end

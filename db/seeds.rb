@@ -17,25 +17,37 @@ u2 = User.create(name: "Placido", username: "p-money", password: "123")
 u3 = User.create(name: "Paul", username: "deathcab", password: "123")
 u4 = User.create(name: "Gian", username: "chickfilaplz", password: "123")
 
-t1 = Terminal.create(number: "A")
-t2 = Terminal.create(number: "B")
-t3 = Terminal.create(number: "C")
+# t1 = Terminal.create(number: "A", airport: )
+# t2 = Terminal.create(number: "B")
+# t3 = Terminal.create(number: "C")
 
-f1 = Flight.create(number: "AA1111", terminal_id: t1.id)
-f2 = Flight.create(number: "SW123", terminal_id: t2.id)
+# f1 = Flight.create(number: "AA1111", terminal_id: t1.id)
+# f2 = Flight.create(number: "SW123", terminal_id: t2.id)
+@flight_data_arr_iah = HTTParty.get('http://api.aviationstack.com/v1/flights?access_key=16e6c3c05aa63a516a8b6ea32be8a235&arr_iata=IAH')
+
+@flight_data_arr_iah["data"].each do |d|
+    t = Terminal.find_or_create_by(number: d['arrival']['terminal'], airport: d['arrival']['airport'], iata: d['arrival']['iata'])
+    Flight.create(number: d['flight']['iata'], 
+    airline: d['airline']['name'], 
+    departing_ap: d['departure']['airport'], 
+    date: d['flight_date'], 
+    arrival_time: d['arrival']['scheduled'], 
+    terminal_id: t.id,)
+end
+
+b1 = Booking.create(user_id: u1.id, flight_id: Flight.first.id)
+b2 = Booking.create(user_id: u2.id, flight_id: Flight.last.id)
+b3 = Booking.create(user_id: u3.id, flight_id: Flight.second.id)
+b4 = Booking.create(user_id: u4.id, flight_id: Flight.third.id)
+b5 = Booking.create(user_id: u1.id, flight_id: Flight.fourth.id)
+b6 = Booking.create(user_id: u3.id, flight_id: Flight.fifth.id)
+
+r1 = Restaurant.create(name: "Chick-Fil-A", terminal_id: Terminal.first.id)
+r2 = Restaurant.create(name: "Chick-Fil-A", terminal_id: Terminal.last.id)
+r3 = Restaurant.create(name: "McDonald's", terminal_id: Terminal.second.id)
+r4 = Restaurant.create(name: "Boomtown Coffee", terminal_id: Terminal.second.id)
+r5 = Restaurant.create(name: "Peet's Coffee", terminal_id: Terminal.first.id)
+r6 = Restaurant.create(name: "Salata", terminal_id: Terminal.last.id)
+r7 = Restaurant.create(name: "Chipotle", terminal_id: Terminal.second.id)
 
 
-b1 = Booking.create(ticket_number: "1ABC123", user: u1, flight_id: f1.id)
-b2 = Booking.create(ticket_number: "1BCD234", user_id: u2.id, flight_id: f1.id)
-b3 = Booking.create(ticket_number: "1CDE345", user_id: u3.id, flight_id: f1.id)
-b4 = Booking.create(ticket_number: "1DEF456", user_id: u4.id, flight_id: f1.id)
-b5 = Booking.create(ticket_number: "2ABC", user_id: u1.id, flight_id: f2.id)
-b6 = Booking.create(ticket_number: "2CDF", user_id: u3.id, flight_id: f2.id)
-
-r1 = Restaurant.create(name: "Chick-Fil-A", terminal_id: t1.id)
-r2 = Restaurant.create(name: "Chick-Fil-A", terminal_id: t2.id)
-r3 = Restaurant.create(name: "McDonald's", terminal_id: t1.id)
-r4 = Restaurant.create(name: "Boomtown Coffee", terminal_id: t2.id)
-r5 = Restaurant.create(name: "Peet's Coffee", terminal_id: t1.id)
-r6 = Restaurant.create(name: "Salata", terminal_id: t2.id)
-r7 = Restaurant.create(name: "Chipotle", terminal_id: t1.id)

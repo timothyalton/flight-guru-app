@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2020_03_03_170810) do
 
   create_table "bookings", force: :cascade do |t|
-    t.string "ticket_number"
     t.integer "user_id"
     t.integer "flight_id"
     t.datetime "created_at", precision: 6, null: false
@@ -22,6 +21,12 @@ ActiveRecord::Schema.define(version: 2020_03_03_170810) do
 
   create_table "flights", force: :cascade do |t|
     t.string "number"
+    t.string "airline"
+    t.string "departing_ap"
+    t.string "arrival_ap"
+    t.string "date"
+    t.string "departure_time"
+    t.string "arrival_time"
     t.integer "terminal_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -36,6 +41,8 @@ ActiveRecord::Schema.define(version: 2020_03_03_170810) do
 
   create_table "terminals", force: :cascade do |t|
     t.string "number"
+    t.string "airport"
+    t.string "iata"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

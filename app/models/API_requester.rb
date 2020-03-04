@@ -17,6 +17,7 @@ class APIRequester < ApplicationRecord
       pp flight['arrival']['scheduled']
     end
 
+
   end
 
 end

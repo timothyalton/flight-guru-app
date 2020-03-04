@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
     before_action :current_booking, only: [:show, :edit, :update, :destroy, :booking_selection_id]
     
     def index
+        @flights = Flight.all
         @bookings = Booking.all
     end
 
@@ -28,3 +29,4 @@ class BookingsController < ApplicationController
 
 
 end
+

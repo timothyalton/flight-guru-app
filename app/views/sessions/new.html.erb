@@ -1,1 +1,12 @@
-<!-- form_with url: "/login" >
+<!-- form_with url: "/login" -->
+<h1>Enter your login information:</h1>
+
+<%= form_with url: '/login' do |f| %>
+  Username: <%= f.text_field :username %><br>
+  Password: <%= f.password_field :password %><br>
+  <%= f.submit "Login" %>
+<% end %>
+
+<% if flash[:error] %>
+<li style="color: red"><%= flash[:error] %></li>
+<% end %>

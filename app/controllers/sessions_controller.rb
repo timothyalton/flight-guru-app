@@ -1,12 +1,34 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticated, only: [:new, :create]
 
   def new 
-    
+    if session[:user_id]
+      redirect_to User.find(session[:user_id])
+    end
   end
 
-  def create
+  # def create # without authentication
+  #   @user = User.find_by(username: params[:username])
+  #   redirect_to @user
+  # end
+
+  def create # with authentication
     @user = User.find_by(username: params[:username])
-    return head(:forbidden) unless @user.authenticate(params[:password])
-    session[:user_id] = @user.id
+
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to @user
+    elsif @user == nil
+      flash[:error] = "Account not found"
+      redirect_to '/login'
+    else
+      flash[:error] = "Incorrect password"
+      redirect_to '/login'
+    end
+  end
+
+  def destroy
+    session.delete(:user_id)
+    redirect_to root_path
   end
 end

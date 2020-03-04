@@ -1,8 +1,10 @@
 class WelcomeController < ApplicationController
+  skip_before_action :authenticated, only: [:homepage]
 
   def homepage
-    @user = User.new
-    @users = User.all
-
+    if logged_in?
+      @user = User.find(session[:user_id])
+    end
   end
+  
 end

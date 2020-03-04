@@ -1,2 +1,17 @@
 <p>Currently logged in as: <%= @user.username %></p>
+<%= form_with url:'/logout', method: "delete" do |f| %>
+<%= f.submit "logout"%>
+<% end %>
+
+
 <h1>Welcome, <%= @user.name %>.</h1>
+
+<h3>Upcoming flights:</h3>
+
+<h3>Add flight</h3>
+<%= form_with do |f| %>
+<input placeholder="Enter flight number">
+<% end %>
+
+
+<button>See previous flights</button>

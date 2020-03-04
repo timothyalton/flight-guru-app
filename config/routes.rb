@@ -3,15 +3,17 @@ Rails.application.routes.draw do
 
   root 'welcome#homepage'
 
-  resources :users
+  resources :users#, only: [:index, :show, :edit, :update, :destroy]
   resources :terminals
   resources :restaurants
   resources :flights
   resources :bookings
 
 
-
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+  delete '/logout' => "sessions#destroy"
 
+  get '/registration' => "users#new"
+  post '/registration' => "users#create"
 end

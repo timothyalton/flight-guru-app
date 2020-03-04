@@ -1,3 +1,15 @@
+<% if flash[:errors] %>
+  <% flash[:errors].each do |e| %>
+    <li style="color: red"><%= e %></li>
+  <% end %>
+<% else %>
+  <br>
+<% end %>
+
+<% if flash[:account_created_message] %>
+  <li style="color: green"><%= flash[:account_created_message] %></li>
+<% end %>
+
 <% if session[:user_id] %>
   <p>Currently logged in as: <%= @user.username %></p>
   <%= form_with url:'/logout', method: "delete" do |f| %>
@@ -6,13 +18,25 @@
 <% end %>
 
 <h1>Flight Guru App</h1>
+<br>
 
 <h3>Already a member?</h3>
+
+<!--
 <%= form_tag('/login', method: 'get') do %>
 <%= submit_tag('Go To Login Page') %>
 <% end %>
+-->
 
-<h3>Not a member yet?</h3>
-<%= form_tag('/users/new', method: 'get') do %>
+<%= form_with url: '/login' do |f| %>
+  Username: <%= f.text_field :username %><br>
+  Password: <%= f.password_field :password %><br>
+  <%= f.submit "Login" %>
+<% end %>
+
+<br>
+<br>
+<h4>Not a member yet?</h4>
+<%= form_tag('/registration', method: 'get') do %>
 <%= submit_tag('Create New Account') %>
 <% end %>

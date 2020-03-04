@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   skip_before_action :authenticated, only: [:new, :create]
-  validates :username, uniqueness: true
 
   def new
     @user = User.new
@@ -19,20 +18,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    byebug
-  end
-
-  def create
-    byebug
     user = User.new(user_params)
 
     if user.valid?
       user.save
-      redirect_to user
+      flash[:account_created_message] = "Account successfully created. Please log in."
+      redirect_to root_path
     else
       flash[:errors] = user.errors.full_messages
       redirect_to new_user_path
     end
+  end
+
+  def edit
+    @user = User.find(session[:user_id])
   end
 
   private

@@ -2,13 +2,14 @@
   <% flash[:errors].each do |e| %>
     <li style="color: red"><%= e %></li>
   <% end %>
+<% elsif flash[:signup_message] %>
+  <li style="color: green"><%= flash[:signup_message] %></li>
+<% elsif flash[:logout_message] %>
+  <li style="color: green"><%= flash[:logout_message] %></li>
 <% else %>
   <br>
 <% end %>
 
-<% if flash[:account_created_message] %>
-  <li style="color: green"><%= flash[:account_created_message] %></li>
-<% end %>
 
 <% if session[:user_id] %>
   <p>Currently logged in as: <%= @user.username %></p>
@@ -21,12 +22,6 @@
 <br>
 
 <h3>Already a member?</h3>
-
-<!--
-<%= form_tag('/login', method: 'get') do %>
-<%= submit_tag('Go To Login Page') %>
-<% end %>
--->
 
 <%= form_with url: '/login' do |f| %>
   Username: <%= f.text_field :username %><br>

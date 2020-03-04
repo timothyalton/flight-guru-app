@@ -1,10 +1,19 @@
 <!-- form_with url: "/login" -->
+<p>You are not logged in.</p>
 <h1>Enter your login information:</h1>
+<br>
 
 <%= form_with url: '/login' do |f| %>
   Username: <%= f.text_field :username %><br>
   Password: <%= f.password_field :password %><br>
   <%= f.submit "Login" %>
+<% end %>
+
+<br>
+<br>
+<h4>Not a member yet?</h4>
+<%= form_tag('/users/new', method: 'get') do %>
+<%= submit_tag('Create New Account') %>
 <% end %>
 
 <% if flash[:error] %>

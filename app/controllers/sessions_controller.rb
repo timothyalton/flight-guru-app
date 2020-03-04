@@ -19,11 +19,17 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     elsif @user == nil
-      flash[:error] = "Account not found"
-      redirect_to '/login'
+      unless flash[:errors]
+        flash[:errors] = []
+      end
+      flash[:errors] << "Account not found"
+      redirect_to root_path
     else
-      flash[:error] = "Incorrect password"
-      redirect_to '/login'
+      unless flash[:errors]
+        flash[:errors] = []
+      end
+      flash[:errors] << "Incorrect password"
+      redirect_to root_path
     end
   end
 

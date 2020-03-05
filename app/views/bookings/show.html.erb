@@ -1,11 +1,53 @@
-<h5>Flight info:</h5>
-<p><strong>Flight Number:</strong> <%=@booking.flight.number%> </p>
+<div style="overflow-x:auto;">
 
+<table>
+  <tr>
+    <th><h5>Flight Information</h5></th>
+  </tr>
+  <tr>
+    <td><strong>Flight Number:</strong></td>
+    <td><%= @booking.flight.number %></td>
+  </tr>
+  <tr>
+    <td><strong>Airline:</strong></td>
+    <td><%= @booking.flight.airline %></td>
+  </tr>
+  <tr>
+    <td><strong>Departing Airport:</strong></td>
+    <td><%= @booking.flight.departing_ap %></td>
+  </tr>
+  <tr>
+    <td><strong>Departure Date/Time:</strong></td>
+    <td><%= @booking.departure_time %></td>
+  </tr>
+  <tr>
+    <td><strong>Arrival Airport:</strong></td>
+    <td><%= @booking.flight.terminal.airport %></td>
+  </tr>
+  <tr>
+    <td><strong>Arrival Date/Time:</strong></td>
+    <td><%= @booking.arrival_time %></td>
+  </tr>
+  <tr>
+    <td><strong>Terminal:</strong></td>
+    <td><%= @booking.flight.terminal.number %></td>
+    <td><button><%= link_to 'Find Restaurants', terminal_path(@booking.flight.terminal) %></button></td>
+  </tr>
+</table>
+
+</div>
 <br/>
-<p><strong>Airline: <%= @booking.flight.airline  %><strong></p>
 <br/>
 <button><%= link_to 'back', user_path(@user) %></button>
 
 <%= form_with model: @booking, method: :delete do |f| %>
     <%= f.submit "Remove Flight"%>
 <% end %>
+
+
+<!-- REWROTE THIS INTO METHODS INSIDE THE MODEL...
+<% if @booking.flight.departure_time %>
+<%= DateTime.iso8601(@booking.flight.departure_time).strftime("%m-%d-%Y / %I:%M%p")%>
+<% else %> <%= "Departure time not listed" %>
+<% end %> -->
+

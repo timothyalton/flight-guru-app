@@ -8,7 +8,6 @@ class BookingsController < ApplicationController
     end
 
     def show 
-
     end
 
     def booking_selection_id
@@ -50,6 +49,25 @@ class BookingsController < ApplicationController
         flash[:flight_removed] = "Flight removed"
         redirect_to @user
     end
+
+    #### these methods don't work here. They can go in model, and use "self" instead of @booking ####
+    # def departure_time 
+    #     byebug
+    #     if @booking.flight.departure_time
+    #         DateTime.iso8601(@booking.flight.departure_time).strftime("%m-%d-%Y / %I:%M%p")
+    #     else
+    #         "Departure time not listed"
+    #     end
+    # end
+    
+    # def arrival_time
+    #     if @booking.flight.arrival_time
+    #         DateTime.iso8601(@booking.flight.arrival_time).strftime("%m-%d-%Y / %I:%M%p")
+    #     else
+    #         "Arrival time not listed"
+    #     end
+    # end
+    ###############################################################################################
 
     private
 

@@ -12,7 +12,7 @@ Flight.destroy_all
 Booking.destroy_all
 Restaurant.destroy_all
 
-u1 = User.create(name: "Mitchell", username: "git money git paid", password: "123")
+u1 = User.create(name: "Mitchell", username: "gitmoneygitpaid", password: "123")
 u2 = User.create(name: "Placido", username: "p-money", password: "123")
 u3 = User.create(name: "Paul", username: "deathcab", password: "123")
 u4 = User.create(name: "Gian", username: "chickfilaplz", password: "123")

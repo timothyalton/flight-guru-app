@@ -7,4 +7,8 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: true
   validates :name, :username, presence: true
+  validates :username, :password, format: { without: /\s/, message: "cannot have spaces" }
+  # validates :username, :password, format: { with: /\A[a-zA-Z0-9]+\Z/ }
+
+  
 end

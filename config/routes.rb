@@ -19,4 +19,5 @@ Rails.application.routes.draw do
 
   post '/terminal_selection_id' => 'terminals#terminal_selection_id'
   post '/booking_selection_id' => 'users#booking_selection_id'
+  
 end

@@ -21,24 +21,35 @@ class BookingsController < ApplicationController
     end
 
     def create
-        # byebug
         # @booking = Booking.new(booking_params)
         @flights = Flight.all
         available_flight = @flights.find do |f|
             f.number == params[:booking][:number]
         end
-        # byebug
-        if available_flight == nil
-            redirect_to new_booking_path
-        else
-        Booking.create(user_id: @user.id, flight_id: available_flight.id)
-        # @booking.save
-        redirect_to user_path(@user)
-        end
 
+        if available_flight
+            new_booking = Booking.new(user_id: @user.id, flight_id: available_flight.id)
+
+            if new_booking.valid?
+                new_booking.save
+                flash[:booking_created] = "Flight added"
+                redirect_to user_path(@user)
+            else
+                flash[:errors] = new_booking.errors.full_messages
+                redirect_to new_booking_path
+            end
+        else
+            set_flash_errors << "Flight not found" 
+            redirect_to new_booking_path
+        end
 
     end
 
+    def destroy
+        @booking.destroy
+        flash[:flight_removed] = "Flight removed"
+        redirect_to @user
+    end
 
     private
 
@@ -49,8 +60,6 @@ class BookingsController < ApplicationController
     def booking_params
         params.require(:booking).permit(:user_id, :flight_id)
     end
-
-
 
 end
 

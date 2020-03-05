@@ -10,7 +10,6 @@
   <br>
 <% end %>
 
-
 <% if session[:user_id] %>
   <p>Currently logged in as: <%= @user.username %></p>
   <%= form_with url:'/logout', method: "delete" do |f| %>

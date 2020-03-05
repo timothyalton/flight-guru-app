@@ -1,5 +1,13 @@
+<h1>Add Flight</h1>
+
 <%= form_with model: @booking do |f| %>
     <%= f.label "Flight Number:"%>
     <%= f.text_field :number%>
     <%= f.submit "Add Flight"%>
+<% end %>
+
+<% if flash[:errors] %>
+  <% flash[:errors].each do |e| %>
+    <li style="color: red"><%= e %></li>
+  <% end %>
 <% end %>

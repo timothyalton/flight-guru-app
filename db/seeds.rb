@@ -35,12 +35,12 @@ u4 = User.create(name: "Gian", username: "chickfilaplz", password: "123")
     terminal_id: t.id,)
 end
 
-b1 = Booking.create(user_id: u1.id, flight_id: Flight.first.id)
-b2 = Booking.create(user_id: u2.id, flight_id: Flight.last.id)
-b3 = Booking.create(user_id: u3.id, flight_id: Flight.second.id)
-b4 = Booking.create(user_id: u4.id, flight_id: Flight.third.id)
-b5 = Booking.create(user_id: u1.id, flight_id: Flight.fourth.id)
-b6 = Booking.create(user_id: u3.id, flight_id: Flight.fifth.id)
+b1 = Booking.create(user_id: u1.id, flight_id: Flight.all.sample.id)
+b2 = Booking.create(user_id: u2.id, flight_id: Flight.all.sample.id)
+b3 = Booking.create(user_id: u3.id, flight_id: Flight.all.sample.id)
+b4 = Booking.create(user_id: u4.id, flight_id: Flight.all.sample.id)
+b5 = Booking.create(user_id: u1.id, flight_id: Flight.all.sample.id)
+b6 = Booking.create(user_id: u3.id, flight_id: Flight.all.sample.id)
 
 r1 = Restaurant.create(name: "Chick-Fil-A", terminal_id: Terminal.first.id)
 r2 = Restaurant.create(name: "Chick-Fil-A", terminal_id: Terminal.last.id)

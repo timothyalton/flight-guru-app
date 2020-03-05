@@ -10,12 +10,12 @@ Rails.application.routes.draw do
   resources :bookings
 
 
-  get '/login' => 'sessions#new'
+  # get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => "sessions#destroy"
 
-  get '/registration' => "users#new"
-  post '/registration' => "users#create"
+  get '/register' => "users#new"
+  post '/register' => "users#create"
 
   post 'terminal_selection_id' => 'terminals#terminal_selection_id'
   post 'booking_selection_id' => 'bookings#booking_selection_id'

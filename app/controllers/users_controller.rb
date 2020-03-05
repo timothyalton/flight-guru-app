@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticated, only: [:new, :create]
 
   def new
+    redirect_if_logged_in
     @user = User.new
   end
 
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
 
     if user.valid?
       user.save
-      flash[:signup_message] = "Account successfully created. Please log in."
+      flash[:signup_message] = "You have created a new account, please sign in"
       redirect_to root_path
     else
       flash[:errors] = user.errors.full_messages

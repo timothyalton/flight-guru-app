@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
-    flash.delete(:errors) if flash[:errors]
+    # flash.delete(:errors) if flash[:errors]
     flash[:logout_message] = "You have logged out of your account"
     # byebug
     redirect_to root_path

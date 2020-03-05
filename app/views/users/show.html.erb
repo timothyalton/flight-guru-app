@@ -3,7 +3,6 @@
 <%= f.submit "logout"%>
 <% end %>
 
-
 <h1>Welcome, <%= @user.name %>.</h1>
 
 <h3> Flights:</h3> 
@@ -11,6 +10,15 @@
     <%= f.collection_select :id, @flights, :id, :number %>
     <%= f.submit "Flight Info"%>
 <% end %>
+
+<% if flash[:booking_created] %>
+  <li style="color: green"><%= flash[:booking_created] %></li>
+<% elsif flash[:flight_removed] %>
+  <li style="color: green"><%= flash[:flight_removed] %></li>
+<% else %>
+  <br>
+<% end %>
+
 <br/>
 <button>
 <%= link_to 'Add Flight', new_booking_path %>

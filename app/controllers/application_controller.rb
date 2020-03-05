@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticated
-    set_flash_errors << "You are not logged in"
+    set_flash_errors << "You are not logged in" unless logged_in?
     redirect_to root_path unless logged_in?
   end
 

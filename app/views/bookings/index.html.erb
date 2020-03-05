@@ -1,5 +1,5 @@
 <p> Flights:</p> 
 <%= form_with url: 'booking_selection_id', method: :post do |f| %> 
-    <%= f.collection_select :id, @flights, :id, :number%>
+    <%= f.collection_select :id, @user.flights, :id, :number%>
     <%= f.submit "Flight Info"%>
 <% end %>

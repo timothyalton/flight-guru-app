@@ -1,0 +1,5 @@
+<%= form_with model: @booking do |f| %>
+    <%= f.label "Flight Number:"%>
+    <%= f.text_field :number%>
+    <%= f.submit "Add Flight"%>
+<% end %>

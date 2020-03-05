@@ -15,6 +15,30 @@ class BookingsController < ApplicationController
         redirect_to booking_path(@booking)
     end
 
+    def new
+        # @flights = Flight.all
+        @booking = Booking.new
+    end
+
+    def create
+        # byebug
+        # @booking = Booking.new(booking_params)
+        @flights = Flight.all
+        available_flight = @flights.find do |f|
+            f.number == params[:booking][:number]
+        end
+        # byebug
+        if available_flight == nil
+            redirect_to new_booking_path
+        else
+        Booking.create(user_id: @user.id, flight_id: available_flight.id)
+        # @booking.save
+        redirect_to user_path(@user)
+        end
+
+
+    end
+
 
     private
 
@@ -23,7 +47,7 @@ class BookingsController < ApplicationController
     end
 
     def booking_params
-        params.require(:booking).permit(:ticket_number, :user_id, :flight_id)
+        params.require(:booking).permit(:user_id, :flight_id)
     end
 
 

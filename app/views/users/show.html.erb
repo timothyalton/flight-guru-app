@@ -6,11 +6,13 @@
 
 <h1>Welcome, <%= @user.name %>.</h1>
 
-<h3>Upcoming flights:</h3>
-
-<h3>Add flight</h3>
-<%= form_with do |f| %>
-<input placeholder="Enter flight number">
+<h3> Flights:</h3> 
+<%= form_with url: '/booking_selection_id', method: :post do |f| %> 
+    <%= f.collection_select :id, @flights, :id, :number %>
+    <%= f.submit "Flight Info"%>
 <% end %>
+<br/>
+<button>
+<%= link_to 'Add Flight', new_booking_path %>
+</button>
 
-<button>See previous flights</button>

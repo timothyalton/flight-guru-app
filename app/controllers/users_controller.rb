@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticated, only: [:new, :create]
+  before_action :find_booking, only: [:booking_selection_id]
 
   def new
     @user = User.new
@@ -9,7 +10,12 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def booking_selection_id
+    redirect_to booking_path(@booking)
+  end
+
   def show
+    @flights = @user.flights
     if session[:user_id] == params[:id].to_i
       @user = User.find(session[:user_id])
     else
@@ -35,6 +41,11 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def find_booking
+    # byebug
+    @booking = @user.bookings.find_by(flight_id: params[:id])
+  end
  
   def user_params
     params.require(:user).permit(:name, :username, :password, :password_confirmation)

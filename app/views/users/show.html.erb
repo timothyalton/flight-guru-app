@@ -1,10 +1,7 @@
-<p>Currently logged in as: <%= @user.username %></p>
-<%= form_with url:'/logout', method: "delete" do |f| %>
-<%= f.submit "logout"%>
-<% end %>
+<!-- <p>Currently logged in as: <%= @user.username %></p>-->
 
 <br>
-<h1>Welcome, <%= @user.name %>.</h1>
+<h1>Welcome, <%= @user.name %>.</h1><br>
 
 <h3> Flights:</h3> 
 <%= form_with url: '/booking_selection_id', method: :post do |f| %> 
@@ -24,4 +21,10 @@
 <button>
 <%= link_to 'Add Flight', new_booking_path %>
 </button>
+<br>
+<br>
+<br>
 
+<%= form_with url:'/logout', method: "delete" do |f| %>
+<%= f.submit "logout"%>
+<% end %> 

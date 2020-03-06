@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    # byebug
     @flights = @user.flights
     if session[:user_id] == params[:id].to_i
       @user = User.find(session[:user_id])

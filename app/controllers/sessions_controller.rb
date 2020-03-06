@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
     elsif @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
+      session[:current_user] = User.find(@user.id)
       redirect_to @user
     elsif @user == nil
       set_flash_errors << "Account not found"
@@ -25,6 +26,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
+    session.delete(:current_user)
     # flash.delete(:errors) if flash[:errors]
     flash[:logout_message] = "You have logged out of your account"
     # byebug

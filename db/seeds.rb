@@ -36,6 +36,29 @@ u5 = User.create(name: "TheOne", username: "1", password: "1")
     terminal_id: t.id,)
 end
 
+@terminals = Terminal.all
+  
+@terminals.each do |t|
+  if t.number
+  @restaurant_data_by_terminal = HTTParty.get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Terminal+#{t.number}+at+#{t.iata}&key=AIzaSyBE_4_oQR77YTzAD4d4Bh2LBWbGdB_mqzc")
+  else 
+  @restaurant_data_by_terminal = HTTParty.get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Terminal+at+#{t.iata}&key=AIzaSyBE_4_oQR77YTzAD4d4Bh2LBWbGdB_mqzc")
+  end
+    @restaurant_data_by_terminal["results"].each do |r|
+      Restaurant.create(name: r['name'], terminal_id: t.id)
+    end
+end 
+
+# @restaurant_data_by_terminal = HTTParty.get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Terminal+#{@terminal.number}+at+#{@terminal.iata}&key=AIzaSyBE_4_oQR77YTzAD4d4Bh2LBWbGdB_mqzc")
+
+# @restaurant_data_by_terminal["results"].each do |r|
+
+# end
+
+
+
+
+
 # b1 = Booking.create(user_id: u1.id, flight_id: Flight.all.sample.id)
 # b2 = Booking.create(user_id: u2.id, flight_id: Flight.all.sample.id)
 # b3 = Booking.create(user_id: u3.id, flight_id: Flight.all.sample.id)
@@ -58,9 +81,9 @@ end
   )
 end
 
-20.times do
-  Restaurant.create(
-    name: Faker::Restaurant.unique.name,
-    terminal_id: Terminal.all.sample.id
-  )
-end
+# 20.times do
+#   Restaurant.create(
+#     name: Faker::Restaurant.unique.name,
+#     terminal_id: Terminal.all.sample.id
+#   )
+# end

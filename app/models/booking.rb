@@ -21,4 +21,15 @@ def arrival_time
     end
 end
 
+def expected_flight_time
+    t1 = Time.now            #DateTime.iso8601(self.flight.departure_time)
+    t2 = DateTime(self.flight.arrival_time)
+p t1
+p t2 
+    # flight_time = (t2-t1)
+    # flight_time
+end
+
+
+
 end

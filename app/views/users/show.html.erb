@@ -18,13 +18,12 @@
 <% end %>
 
 <br/>
-<button>
+<button class="button">
 <%= link_to 'Add Flight', new_booking_path %>
 </button>
 <br>
 <br>
 <br>
-
 <%= form_with url:'/logout', method: "delete" do |f| %>
 <%= f.submit "logout"%>
 <% end %> 

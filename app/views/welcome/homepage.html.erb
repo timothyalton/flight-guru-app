@@ -21,11 +21,13 @@
 <br>
 
 <h3>Already a member?</h3>
-
+<div style="color: white;">
 <%= form_with url: '/login' do |f| %>
   Username: <%= f.text_field :username %><br>
   Password: <%= f.password_field :password %><br>
   <br>
+</div>
+
   <%= f.submit "Login" %>
 <% end %>
 

@@ -181,6 +181,7 @@ body {
           <ul class="navbar-nav ml-auto">
             <% if session[:current_user] %>
               <li class="nav-item">
+
                 <a class="nav-link" style="font-size: 50%;" href="/">Currently logged in as: <%= session[:current_user]["username"] %></a>
               </li>
             <% else %>
@@ -203,10 +204,13 @@ body {
   <div class="white-box"></div>
     <div class="grey-box">
         <%= yield %>
+<br><br><br><br><br><br>
+
     </div>
 
     <!-- Bootstrap core JavaScript -->
     <script src="<%= request.base_url %>/vendor/jquery/jquery.slim.min.js"></script>
     <script src="<%= request.base_url %>/js/bootstrap.bundle.min.js"></script>
   </body>
+  
 </html>

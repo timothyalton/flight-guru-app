@@ -11,4 +11,12 @@ class Terminal < ApplicationRecord
     # end
 
 
+    def self.total_number_of_restaurants
+      Restaurant.all.count
+    end
+
+    def self.average_number_of_restaurants
+      (total_number_of_restaurants.to_f/Terminal.count).round(2)
+    end
+
 end

@@ -17,6 +17,14 @@
   <br>
 <% end %>
 
+<% if flash[:errors] %>
+  <% flash[:errors].each do |e| %>
+    <li style="color:red"><%= e %></li>
+  <% end %>
+<% else %>
+  <br>
+<% end %>
+
 <br/>
 <button>
 <%= link_to 'Add Flight', new_booking_path %>

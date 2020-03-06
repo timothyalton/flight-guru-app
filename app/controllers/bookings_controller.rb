@@ -10,9 +10,13 @@ class BookingsController < ApplicationController
     def show 
     end
 
-    def booking_selection_id
-        redirect_to booking_path(@booking)
-    end
+    # def booking_selection_id
+    #     if @booking
+    #     redirect_to booking_path(@booking)
+    #     else
+    #       redirect_to @user
+    #     end
+    # end
 
     def new
         # @flights = Flight.all

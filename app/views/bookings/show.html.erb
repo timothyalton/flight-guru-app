@@ -5,37 +5,37 @@
 </style>
 
 
-<table style="border-style: groove; border-width: 5px; table-layout: auto; width: 75%; border-collapse: separate;
+<table align="center" style="border-style: groove; border-width: 5px; table-layout: auto; width: 75%; border-collapse: separate;
   border-spacing: 15px 0px; color: white">
   <tr>
-    <th><h1>Flight Information</h1></th>
+    <th><h1 style="margin-right: -200px;">Flight Information</h1></th>
   </tr>
   <tr>
-    <td><strong>Flight Number:</strong></td>
+    <td style="text-align: left;"><strong>Flight Number:</strong></td>
     <td><%= @booking.flight.number %></td>
   </tr>
   <tr>
-    <td><strong>Airline:</strong></td>
+    <td style="text-align: left;"><strong>Airline:</strong></td>
     <td><%= @booking.flight.airline %></td>
   </tr>
   <tr>
-    <td><strong>Departing Airport:</strong></td>
+    <td style="text-align: left;"><strong>Departing Airport:</strong></td>
     <td><%= @booking.flight.departing_ap %></td>
   </tr>
   <tr>
-    <td><strong>Departure Date/Time:</strong></td>
+    <td style="text-align: left;"><strong>Departure Date/Time:</strong></td>
     <td><%= @booking.departure_time %></td>
   </tr>
   <tr>
-    <td><strong>Arrival Airport:</strong></td>
+    <td style="text-align: left;"><strong>Arrival Airport:</strong></td>
     <td><%= @booking.flight.terminal.airport %></td>
   </tr>
   <tr>
-    <td><strong>Arrival Date/Time:</strong></td>
+    <td style="text-align: left;"><strong>Arrival Date/Time:</strong></td>
     <td><%= @booking.arrival_time %></td>
   </tr>
   <tr>
-    <td><strong>Terminal:</strong></td>
+    <td style="text-align: left;"><strong>Terminal:</strong></td>
     <td><%= @booking.flight.terminal.number %></td>
     <td></td>
   </tr>

@@ -11,9 +11,19 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def booking_selection_id
-    redirect_to booking_path(@booking)
-  end
+  # def booking_selection_id
+  #   redirect_to booking_path(@booking)
+  # end
+
+      def booking_selection_id
+        if @booking
+        redirect_to booking_path(@booking)
+        else
+          set_flash_errors << "No flights found. Please add a flight"
+          redirect_to @user
+        end
+    end
+
 
   def show
     # byebug

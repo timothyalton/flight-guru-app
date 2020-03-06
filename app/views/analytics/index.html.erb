@@ -1,5 +1,46 @@
 <h1>ANALYTICS, YO</h1>
 <br>
 <br>
-<h3>Average Bookings Per User:</h3>
-<%= User.average_bookings_per_user %>
+<h3>Average Number of Bookings Per User</h3>
+<%= User.average_number_of_bookings %>
+<br>
+<h3>Average Number of Restaurants Per Terminal</h3>
+<%= Terminal.average_number_of_restaurants %>
+<br>
+<h3>Users With No Bookings</h3>
+<%= User.with_no_bookings %>
+<br>
+<h3>User With The Most Bookings</h3>
+<%= User.most_bookings%>
+<br>
+<h3>User With The Least Bookings</h3>
+<%= User.least_bookings%>
+<br>
+<h3>Total Number of Airlines</h3>
+<%= Flight.airline_count %>
+<br>
+<h3>Airline With The Most Flights</h3>
+<%= Flight.airline_with_most_flights %>
+<br>
+<h3>Airline With The Least Flights</h3>
+<%= Flight.airline_with_least_flights %>
+<br>
+
+<br>
+
+
+
+<br>
+<br>
+<h3>Average Number of Bookings Per User: <%= User.average_number_of_bookings %></h3>
+<h3>Average Number of Restaurants Per Terminal: <%= Terminal.average_number_of_restaurants %></h3>
+
+
+<br>
+<br>
+<br>
+<p>There was an average of <%= User.average_number_of_bookings %> bookings per user.</p>
+<br>
+<p>There was an average of <%= Terminal.average_number_of_restaurants %> restaurants per Terminal.</p>
+
+<%= p Flight.airline_count %>

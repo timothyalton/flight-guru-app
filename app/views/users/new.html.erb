@@ -3,10 +3,10 @@
 <h1>Create your account!</h1>
 
 <%= form_with model: @user, url: '/register' do |f| %>
-  Name: <%= f.text_field :name %><br>
-  Username: <%= f.text_field :username %><br>
-  Password: <%= f.password_field :password %><br>
-  Confirm Password: <%= f.password_field :password_confirmation %><br>
+  <label>Name:</label> <%= f.text_field :name %><br>
+  <label>Username:</label> <%= f.text_field :username %><br>
+  <label>Password:</label> <%= f.password_field :password %><br>
+  <label>Confirm Password:</label> <%= f.password_field :password_confirmation %><br>
   <%= f.submit "Create account" %>
 <% end %>
 

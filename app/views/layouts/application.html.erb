@@ -25,16 +25,78 @@
 <style>
 
 
-/* h1 {
-  font-family: Arial, Helvetica, sans-serif;
-} */
+h1 {
+  color: white;
+}
+h2 {
+  color: white;
+}
+h3 {
+  color: white;
+}
+h4 {
+  color: white;
+}
+h5 {
+  color: white;
+}
+p {
+  color: white;
+}
+
+
+/* .table_border {
+  border-width: 5px;  
+  border-style: groove;
+  width: 75%;
+  table-layout: auto;
+  /* border-collapse: seperate; */
+  /* border-spacing: 15px 0px; */
+/* } */
+
+.button {
+  background-color: #2072fc; /* light blue */
+  border-radius: 10px;
+  color: white;
+  padding: 2px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  
+
+}
+.button:hover {
+  background-color: #666666;
+  color: white;
+}
 .white-box {
-  background-color: white;
+  background-color: #2072fc;
   /* border: 35px solid #3878F7;
   border-radius: 35px; */
   /* margin: auto; */
   min-width: 600px;
-  width: 60%;
+  width: 50%;
+  height: 100vh;
+  position: fixed;
+  padding: 30px;
+  left: 50%;
+  top: 80px;
+  transform: translate(-50%, 0%);
+  text-align: center;
+  overflow: auto;
+}
+
+.grey-box {
+  background-color: #333332;
+  
+  
+  box-shadow: 0px 10px 25px 25px;
+  /* border: 35px solid #3878F7;
+  border-radius: 35px; */
+  /* margin: auto; */
+  min-width: 600px;
+  width: 40%;
   height: 100vh;
   position: fixed;
   padding: 30px;
@@ -62,6 +124,13 @@
 a.navbar-brand {
   text-align: left;
   font-size: 300px;
+}
+
+a:visited {
+  color:white;
+}
+a:link {
+  color:white;
 }
 .clearfix {
   overflow: auto;
@@ -99,7 +168,7 @@ body {
   
 
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" style="height: 77px">
-      <p style="font-size: 75%; color: #02A1FC;">Flight</p> <p style="font-size: 50%; color: white;"> Guru</p>
+      <p style="font-size: 75%; color: #02A1FC;">Flight</p> <p style="font-size: 45%; color: white;"> Guru</p>
     
       <a class="nav-brand"  href='/'>
       <img  style="width: 50%; height: 25%; margin-left: -40px" src="<%=request.base_url %>/assets/flight-guru-logo.png"></a>
@@ -112,14 +181,14 @@ body {
           <ul class="navbar-nav ml-auto">
             <% if session[:current_user] %>
               <li class="nav-item">
-                <a class="nav-link" href="/">Currently logged in as: <%= session[:current_user]["username"] %></a>
+                <a class="nav-link" style="font-size: 50%;" href="/">Currently logged in as: <%= session[:current_user]["username"] %></a>
               </li>
             <% else %>
               <li class="nav-item">
-                <a class="nav-link" href="/register">Sign Up</a>
+                <a class="nav-link" style="font-size: 50%;" href="/register">Sign Up</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/">Log In</a>
+                <a class="nav-link" style="font-size: 50%;" href="/">Log In</a>
               </li>
             <% end %>
           </ul>
@@ -131,8 +200,8 @@ body {
     <div class="home-video-wrapper">
       <%= video_tag "airport-terminal.mov", autoplay: :autoplay, loop: :loop, mute: :mute, class: "home_video" %>
     </div>
-
-    <div class="white-box">
+  <div class="white-box"></div>
+    <div class="grey-box">
         <%= yield %>
     </div>
 

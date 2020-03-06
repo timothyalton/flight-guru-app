@@ -5,8 +5,8 @@
 </style>
 
 
-<table style="table-layout: auto; width: 100%; border-collapse: separate;
-  border-spacing: 15px 0px">
+<table style="border-style: groove; border-width: 5px; table-layout: auto; width: 75%; border-collapse: separate;
+  border-spacing: 15px 0px; color: white">
   <tr>
     <th><h1>Flight Information</h1></th>
   </tr>
@@ -40,16 +40,18 @@
     <td></td>
   </tr>
 </table>
-<br>
-<button><%= link_to 'Find Restaurants', terminal_path(@booking.flight.terminal) %></button>
 <br/>
+<button class="button"><%= link_to 'Find Restaurants', terminal_path(@booking.flight.terminal) %></button>
+<br/>
+<br/>
+
 <%= form_with model: @booking, method: :delete do |f| %>
     <%= f.submit "Remove Flight"%>
 <% end %>
 <br/>
-<br>
+<br/>
 <div style="text-align: center;">
-<button><%= link_to 'Back', user_path(@user) %></button>
+<button class="button"><%= link_to 'Back', user_path(@user) %></button>
 
 
 </div>

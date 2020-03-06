@@ -8,12 +8,11 @@ class TerminalsController < ApplicationController
     end
 
     def show
-        if @terminal.number 
-        @response = HTTParty.get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Terminal+#{@terminal.number}+at+#{@terminal.iata}&key=AIzaSyBE_4_oQR77YTzAD4d4Bh2LBWbGdB_mqzc")
-        else 
-        @response = HTTParty.get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Terminal+at+#{@terminal.iata}&key=AIzaSyBE_4_oQR77YTzAD4d4Bh2LBWbGdB_mqzc")
-
-        end
+        # if @terminal.number 
+        # @response = HTTParty.get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Terminal+#{@terminal.number}+at+#{@terminal.iata}&key=AIzaSyBE_4_oQR77YTzAD4d4Bh2LBWbGdB_mqzc")
+        # else 
+        # @response = HTTParty.get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Terminal+at+#{@terminal.iata}&key=AIzaSyBE_4_oQR77YTzAD4d4Bh2LBWbGdB_mqzc")
+        # end
         # byebug
     end
 

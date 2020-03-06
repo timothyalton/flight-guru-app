@@ -42,7 +42,7 @@
   top: 80px;
   transform: translate(-50%, 0%);
   text-align: center;
-  overflow: scroll;
+  overflow: auto;
 }
 .header {
   padding: 60px;
@@ -81,6 +81,7 @@ a.navbar-brand {
   min-width: 100%; 
   min-height: 100%;
 }
+
 body {
   font-size: 200%;
   background-color: white;
@@ -92,11 +93,18 @@ body {
   </head>
 
   <body>
-
+         <div id="my_logo"></div>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+
+  
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" style="height: 77px">
+      <p style="font-size: 75%; color: #02A1FC;">Flight</p> <p style="font-size: 50%; color: white;"> Guru</p>
+    
+      <a class="nav-brand"  href='/'>
+      <img  style="width: 50%; height: 25%; margin-left: -40px" src="<%=request.base_url %>/assets/flight-guru-logo.png"></a>
       <div class="container">
-        <a class="navbar-brand" href='/'>Flight Guru App</a>
+      
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -123,7 +131,6 @@ body {
     <div class="home-video-wrapper">
       <%= video_tag "airport-terminal.mov", autoplay: :autoplay, loop: :loop, mute: :mute, class: "home_video" %>
     </div>
-
 
     <div class="white-box">
         <%= yield %>

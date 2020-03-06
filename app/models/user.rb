@@ -14,7 +14,20 @@ class User < ApplicationRecord
     Booking.all.count
   end
 
-  def self.average_bookings_per_user
-    (total_bookings.to_f/User.all.count).round(2)
+  def self.average_number_of_bookings
+    (total_bookings.to_f/User.count).round(2)
   end
+
+  def self.with_no_bookings
+    User.all.select {|user| user.bookings.count == 0}.count
+  end
+
+  def self.most_bookings
+    User.all.max_by {|user| user.bookings.count }.name
+  end
+
+  def self.least_bookings
+    User.all.min_by {|user| user.bookings.count }.name
+  end
+
 end

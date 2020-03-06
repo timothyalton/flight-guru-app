@@ -112,14 +112,14 @@ body {
           <ul class="navbar-nav ml-auto">
             <% if session[:current_user] %>
               <li class="nav-item">
-                <a class="nav-link" href="/">Currently logged in as: <%= session[:current_user]["username"] %></a>
+                <a class="nav-link" style="font-size: 50%" href="/">Currently logged in as: <%= session[:current_user]["username"] %></a>
               </li>
             <% else %>
               <li class="nav-item">
-                <a class="nav-link" href="/register">Sign Up</a>
+                <a class="nav-link" style="font-size: 50%" href="/register">Sign Up</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/">Log In</a>
+                <a class="nav-link" style="font-size: 50%" href="/">Log In</a>
               </li>
             <% end %>
           </ul>

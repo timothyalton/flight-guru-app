@@ -24,7 +24,9 @@
 
 <style>
 
-
+/* html {
+  overflow-y: scroll;
+} */
 h1 {
   color: white;
 }
@@ -66,33 +68,31 @@ label {
   display: inline-block;
   font-size: 16px;
   
-
 }
 .button:hover {
   background-color: #666666;
   color: white;
   box-shadow: 0px 0px 5px 5px
 }
-.white-box {
+.blue-box {
   background-color: #2072fc;
   /* border: 35px solid #3878F7;
   border-radius: 35px; */
   /* margin: auto; */
-  min-width: 600px;
+  min-width: 700px;
   width: 50%;
   height: 100vh;
   position: fixed;
   padding: 30px;
   left: 50%;
-  top: 80px;
+  top: 77px;
   transform: translate(-50%, 0%);
   text-align: center;
-  
-}
+  /* overflow: auto; */
+
 
 .grey-box {
   background-color: #333332;
-  
   
   box-shadow: 0px 10px 25px 25px;
   /* border: 35px solid #3878F7;
@@ -104,7 +104,7 @@ label {
   position: fixed;
   padding: 30px;
   left: 50%;
-  top: 80px;
+  top: 77px;
   transform: translate(-50%, 0%);
   text-align: center;
 }
@@ -157,6 +157,7 @@ body {
   font-size: 200%;
   background-color: white;
   margin: auto;
+  height: 100%;
   overflow: auto;
 
 }
@@ -165,12 +166,8 @@ body {
 
   </head>
 
-  <body>
-         <div id="my_logo"></div>
+  <body style="overflow: auto;">
     <!-- Navigation -->
-
-  
-
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" style="height: 77px">
       <p style="font-size: 75%; color: #02A1FC;">Flight</p> <p style="font-size: 45%; color: white;"> Guru</p>
     
@@ -205,11 +202,10 @@ body {
     <div class="home-video-wrapper">
       <%= video_tag "airport-terminal.mov", autoplay: :autoplay, loop: :loop, mute: :mute, class: "home_video" %>
     </div>
-  <div class="white-box"></div>
-    <div class="grey-box">
-        <%= yield %>
-<br><br><br><br><br><br>
-
+    <div class="blue-box" style="overflow: auto"></div>
+    <div class="grey-box" style="overflow: auto">
+      <%= yield %>
+      <br><br><br><br><br><br>
     </div>
 
     <!-- Bootstrap core JavaScript -->
